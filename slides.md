@@ -166,3 +166,88 @@ public class Compra​
 }​
 ```
 ---
+
+# Análisis
+
+La implementación anterior tiene en la logica de calcular impuestos todos los distintos calculos dependiendo del país.
+
+# Impacto
+
++ Escalabilidad: agregar nuevos países requiere modificar la clase.
++ Mantenibilidad: aumenta la complejidad del método.
++ Acoplamiento: Compra conoce todos los cálculos de impuestos.
+
+---
+
+# Posible solución
+````md magic-move
+```csharp
+public class Compra​
+    {​
+        public string Pais { get; set; }​
+
+        public int CalcularImpuestos()​
+        {​
+            var impuestos = 0;​
+            if (Pais == "uy")​
+            {​
+                // Cada una de estas, es una implementacion del cálculo​
+            }​
+            else if (Pais == "us")​
+            {​
+	              // Cada una de estas, es una implementacion del cálculo​
+            }​
+            return impuestos;​
+        }​
+}​
+```
+```csharp
+public class Compra
+{
+    public IPais Pais { get; set; }
+
+    public int CalcularImpuestos()
+    {
+        return Pais.CalcularImpuestos(this);
+    }
+}
+
+public interface IPais
+{
+    int CalcularImpuestos(Compra compra);
+}
+
+public class Uruguay : IPais
+{
+    public int CalcularImpuestos(Compra compra)
+    {
+        return (int)(compra.Total * 0.22);
+    }
+}
+```
+````
+---
+layout: default
+---
+
+<div class="h-full flex flex-col items-center justify-center">
+
+# Template de soluciones
+
+<img src="/strategyStructure.png" class="max-w-xs mt-6" />
+
+</div>
+
+---
+
+# Consecuencias 
+
++ Permite el reuso de una familia de algoritmos​
+
++ Permite extender el comportamiento sin tener que usar herencia (sobre el cliente), por el contrario, utiliza composición y delegación. Favorece cumplir con el OCP y DIP. ​
+
++ Permite elegir la implementación en tiempo de ejecución utilizando el polimorfismo. ​
+
++ Incrementa el número de clases de la aplicación ​
+
+​
