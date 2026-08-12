@@ -61,7 +61,7 @@ Un **patrón (Pattern)** describe una **solución a un problema** que surge al d
 
 ---
 layout: image-right
-image: ./imgs/libroPatterns.jpg
+image: /libroPatterns.jpg
 backgroundSize: 75% 75%
 ---
 
