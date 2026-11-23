@@ -96,6 +96,24 @@ layout: section
 layout: default
 ---
 
+# TPT — Cómo quedarían las tablas
+
+<div class="flex items-center justify-center h-3/5 mt-2">
+
+<img src="/TPT.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
+
+</div>
+
+<div class="mt-4 p-3 rounded bg-amber-500/10 border border-amber-500/30 text-xs">
+
+<b>4 tablas.</b> El <code>id</code> de cada hija es PK y FK a <code>Persona</code>. Para traer un <code>Docente</code> completo hay que hacer JOIN entre <code>Persona</code> y <code>Docente</code>.
+
+</div>
+
+---
+layout: default
+---
+
 # TPT — La idea
 
 <div class="text-lg mt-6">
@@ -126,29 +144,29 @@ layout: default
 </div>
 
 ---
-layout: default
----
-
-# TPT — Cómo quedarían las tablas
-
-<div class="flex items-center justify-center h-3/5 mt-2">
-
-<img src="/TPT.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
-
-</div>
-
-<div class="mt-4 p-3 rounded bg-amber-500/10 border border-amber-500/30 text-xs">
-
-<b>4 tablas.</b> El <code>id</code> de cada hija es PK y FK a <code>Persona</code>. Para traer un <code>Docente</code> completo hay que hacer JOIN entre <code>Persona</code> y <code>Docente</code>.
-
-</div>
-
----
 layout: section
 ---
 
 # TPC
 ## Table Per Concrete type
+
+---
+layout: default
+---
+
+# TPC — Cómo quedarían las tablas
+
+<div class="flex items-center justify-center h-3/5 mt-2">
+
+<img src="/TPC.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
+
+</div>
+
+<div class="mt-4 p-3 rounded bg-emerald-500/10 border border-emerald-500/30 text-xs">
+
+<b>3 tablas y ninguna <code>Persona</code>.</b> Las columnas comunes (<code>nombre</code>, <code>apellido</code>, <code>fechaNacimiento</code>, <code>email</code>) se repiten en las tres. Un <code>Docente</code> se trae de una sola tabla, sin JOIN.
+
+</div>
 
 ---
 layout: default
@@ -184,29 +202,33 @@ layout: default
 </div>
 
 ---
-layout: default
----
-
-# TPC — Cómo quedarían las tablas
-
-<div class="flex items-center justify-center h-3/5 mt-2">
-
-<img src="/TPC.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
-
-</div>
-
-<div class="mt-4 p-3 rounded bg-emerald-500/10 border border-emerald-500/30 text-xs">
-
-<b>3 tablas y ninguna <code>Persona</code>.</b> Las columnas comunes (<code>nombre</code>, <code>apellido</code>, <code>fechaNacimiento</code>, <code>email</code>) se repiten en las tres. Un <code>Docente</code> se trae de una sola tabla, sin JOIN.
-
-</div>
-
----
 layout: section
 ---
 
 # TPH
 ## Table Per Hierarchy
+
+---
+layout: default
+---
+
+# TPH — Cómo quedaría la tabla
+
+<div class="flex items-center justify-center h-3/5 mt-2">
+
+<img src="/TPH.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
+
+</div>
+
+<div class="mt-4 p-3 rounded bg-cyan-500/10 border border-cyan-500/30 text-xs">
+
+<b>1 sola tabla</b> con todas las columnas de la jerarquía + <code>discriminator</code>. Nunca hay JOIN, pero las columnas de las hijas quedan en <code>NULL</code> para las filas que no corresponden.
+
+</div>
+
+<!--
+Pregunta típica de parcial: "mapeá esta jerarquía con X estrategia y dibujá las tablas".
+-->
 
 ---
 layout: default
@@ -240,25 +262,3 @@ layout: default
 </div>
 
 </div>
-
----
-layout: default
----
-
-# TPH — Cómo quedaría la tabla
-
-<div class="flex items-center justify-center h-3/5 mt-2">
-
-<img src="/TPH.png" class="max-h-full max-w-full object-contain rounded bg-white p-2 shadow" />
-
-</div>
-
-<div class="mt-4 p-3 rounded bg-cyan-500/10 border border-cyan-500/30 text-xs">
-
-<b>1 sola tabla</b> con todas las columnas de la jerarquía + <code>discriminator</code>. Nunca hay JOIN, pero las columnas de las hijas quedan en <code>NULL</code> para las filas que no corresponden.
-
-</div>
-
-<!--
-Pregunta típica de parcial: "mapeá esta jerarquía con X estrategia y dibujá las tablas".
--->
